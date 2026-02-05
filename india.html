@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karma:wght@400;700&family=Merriweather:wght@300;900&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --organe: #FF9933;
+            --w: #FFFFFF;
+            --g: #138808;
+            --b: #000080;
+            --bl: #222222;
+            --bg: #f8f8f8;
+            --fh: 'Merriweather', serif;
+            --fb: 'Karma', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fb);
+            background-color: var(--bg);
+            color: var(--bl);
+            line-height: 1.6;
+        }
+
+
+        .flag-wrapper {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto 2rem;
+        }
+
+        .stripe {
+            width: 100%;
+            height: 33.33%;
+        }
+
+        .organe { background-color: var(--organe); }
+        .white { 
+            background-color: var(--w); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .green { background-color: var(--g); }
+
+        .chakra {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--b);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .chakra::after {
+            content: "☸";
+            color: var(--b);
+            font-size: 46px;
+            line-height: 46px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 6rem 1rem;
+            background-color: white;
+            border-bottom: 4px solid var(--organe);
+        }
+
+        h1 {
+            font-family: var(--fh);
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--bl);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+
+        .intro {
+            border-left: 5px solid var(--g);
+            padding-left: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .intro p {
+            font-size: 1.4rem;
+            max-width: 800px;
+        }
+
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+
+        }
+
+        .card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            font-family: var(--fh);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--b);
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #444;
+        }
+
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background-color: var(--bl);
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            min-width: 200px;
+            margin: 1rem 0;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-family: var(--fh);
+            color: var(--organe);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .flag-wrapper { width: 225px; height: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="flag-wrapper">
+            <div class="stripe organe"></div>
+            <div class="stripe white">
+                <div class="chakra"></div>
+            </div>
+            <div class="stripe green"></div>
+        </div>
+        <h1>India</h1>
+        <p class="subtitle">Unity in Diversity • Since 1947</p>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p><strong>India</strong> is a joint puzzle of multicultural experiences. From Himalayas to the beaches of the south, it is a nation of vibrant colors, rich history, and spiritual depth.</p>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80" class="card-img">
+                <div class="card-content">
+                    <h3>Heritage</h3>
+                    <p>Taj mahel is one of the oldest artifact, it is one of the 7 wonders of the world!! </p>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80" class="card-img">
+                <div class="card-content">
+                    <h3>FOOD</h3>
+                    <p>So many varities of food that you might aswell eat while sleeping to try all of it.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=600&q=80"class="card-img">
+                <div class="card-content">
+                    <h3>Spirituality ommmm</h3>
+                    <p>The birthplace of four major world religions. The ghats of Varanasi and the yoga centers of Rishikesh offer peace to the soul.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <section class="stats">
+        <div class="stat-item">
+            <span class="stat-number">22</span>
+            <span class="stat-label">Official Languages</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">28</span>
+            <span class="stat-label">States</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">4000+</span>
+            <span class="stat-label">Years of History</span>
+        </div>
+    </section>
+
+    <footer>
+        &copy; Azmeer Pirani AJU 🫡
+    </footer>
+
+</body>
+</html>
