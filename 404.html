@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html bgcolor="#f0f0f0">
+<body bgcolor="#f0f0f0" style="margin:0;overflow:hidden">
+<center>
+    <font face="Arial">
+        <h1>404: PAGE HARD TO CATCH</h1>
+        <p id="msg">He has the link. Catch him if you can.</p>
+    </font>
+</center>
+
+<div id="man" style="position:absolute;left:50%;top:50%;font-size:50px;cursor:pointer;transition:0.1s;user-select:none">🏃‍♂️</div>
+
+<script>
+    const m = document.getElementById('man'), msg = document.getElementById('msg');
+    const q = ["Missed me!", "Wrong way, buddy.", "I'm the 4, you're the 0.", "Try harder.", "Is that your best?", "Not today!"];
+
+    document.onmousemove = (e) => {
+        const dx = e.pageX - m.offsetLeft - 25, dy = e.pageY - m.offsetTop - 25;
+        if (Math.sqrt(dx*dx + dy*dy) < 100) {
+            m.style.left = Math.random() * (window.innerWidth - 60) + "px";
+            m.style.top = Math.random() * (window.innerHeight - 60) + "px";
+            msg.innerHTML = q[Math.floor(Math.random() * q.length)];
+            m.innerHTML = "🏃‍♂️💨";
+        }
+    };
+
+    m.onclick = () => {
+        alert("Fine! You caught me. But I still don't have your page.");
+        location.reload();
+    };
+</script>
+</body>
+</html>
