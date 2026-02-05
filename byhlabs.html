@@ -6,12 +6,13 @@
     <title>BYH | AZMEER</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        
         :root {
-            --b: #2563eb;    
+            --b: #ef4444;   
             --d: #0f172a;    
-            --g: #f8fafc;    
-            --s: 2.5rem;       
-            --r: 0.75rem;       
+            --g: #ffffff;    
+            --s: 2.5rem;     
+            --r: 0px;        
         }
 
         @keyframes wave {
@@ -23,12 +24,12 @@
         .c-b { color: var(--b); }
         .b-b { background-color: var(--b); }
         .rnd { border-radius: var(--r); }
-        .shd { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        
     </style>
 </head>
-<body class="bg-[var(--g)] text-[var(--d)] font-sans selection:bg-blue-100">
+<body class="bg-[var(--g)] text-[var(--d)] font-sans selection:bg-red-100">
 
-    <nav class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
             <div class="text-2xl font-black c-b tracking-tighter">BYH</div>
             <div class="hidden md:flex space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
@@ -43,19 +44,19 @@
     <div class="container mx-auto px-6 py-12 flex flex-col lg:flex-row gap-[var(--s)]">
         
         <aside class="lg:w-80 flex-shrink-0">
-            <div class="bg-white p-8 rnd shd sticky top-32 border border-gray-50">
+            <div class="bg-white p-8 rnd sticky top-32 border border-gray-200">
                 <div class="mb-8">
-                    <h3 class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-3">Overview</h3>
+                    <h3 class="text-[10px] font-bold text-red-600 uppercase tracking-widest mb-3">Overview</h3>
                     <p class="text-sm text-gray-500 leading-relaxed font-medium">Developing high-performance hardware interfaces and custom silicon solutions.</p>
                 </div>
                 
                 <div id="skl" class="pt-8 border-t border-gray-100">
                     <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-5">Competencies</h4>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-gray-50 p-3 rnd text-[10px] font-black text-center">KICAD</div>
-                        <div class="bg-gray-50 p-3 rnd text-[10px] font-black text-center">PYTHON</div>
-                        <div class="bg-gray-50 p-3 rnd text-[10px] font-black text-center">C++</div>
-                        <div class="bg-gray-50 p-3 rnd text-[10px] font-black text-center">HID</div>
+                    <div class="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200">
+                        <div class="bg-white p-3 text-[10px] font-black text-center italic">KICAD</div>
+                        <div class="bg-white p-3 text-[10px] font-black text-center italic">PYTHON</div>
+                        <div class="bg-white p-3 text-[10px] font-black text-center italic">C++</div>
+                        <div class="bg-white p-3 text-[10px] font-black text-center italic">HID</div>
                     </div>
                 </div>
             </div>
@@ -66,22 +67,22 @@
             <section id="pro" class="mb-20">
                 <h2 class="text-xs font-bold text-gray-400 uppercase tracking-[0.4em] mb-10">Production_History</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <a href="https://blueprint.hackclub.com/projects/11001" target="_blank" class="group block bg-white rnd overflow-hidden shd border border-transparent hover:border-blue-500 transition-all duration-500">
-                        <div class="aspect-video bg-slate-100 overflow-hidden">
-                            <img src="https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OTU1ODksInB1ciI6ImJsb2JfaWQifX0=--b19768944beb1195b6a0940a2c0ddb73eba5a63b/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0f85faa91c373105a0f317054e965c1f47e93a37/Screenshot%202026-01-31%20at%2012.18.25.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <a href="https://blueprint.hackclub.com/projects/11001" target="_blank" class="group block bg-white rnd overflow-hidden border border-gray-200 hover:border-red-500 transition-all duration-300">
+                        <div class="aspect-video bg-gray-100 overflow-hidden">
+                            <img src="https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OTU1ODksInB1ciI6ImJsb2JfaWQifX0=--b19768944beb1195b6a0940a2c0ddb73eba5a63b/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0f85faa91c373105a0f317054e965c1f47e93a37/Screenshot%202026-01-31%20at%2012.18.25.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <div class="p-8">
-                            <h3 class="text-xl font-bold tracking-tight">BYH Devboard</h3>
+                            <h3 class="text-xl font-bold tracking-tight uppercase italic">BYH Devboard</h3>
                             <p class="text-sm text-gray-400 mt-2">RP2040 Prototyping</p>
                         </div>
                     </a>
                     
-                    <a href="https://blueprint.hackclub.com/projects/3464" target="_blank" class="group block bg-white rnd overflow-hidden shd border border-transparent hover:border-blue-500 transition-all duration-500">
-                        <div class="aspect-video bg-slate-100 overflow-hidden">
-                            <img src="https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OTI3NjgsInB1ciI6ImJsb2JfaWQifX0=--6ca020de218060435c20d816e6a76a6b30cda4c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--15ca3815f01a5683e19ea0585d2eef9af9e441d7/IMG_20260125_165033592.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <a href="https://blueprint.hackclub.com/projects/3464" target="_blank" class="group block bg-white rnd overflow-hidden border border-gray-200 hover:border-red-500 transition-all duration-300">
+                        <div class="aspect-video bg-gray-100 overflow-hidden">
+                            <img src="https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OTI3NjgsInB1ciI6ImJsb2JfaWQifX0=--6ca020de218060435c20d816e6a76a6b30cda4c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--15ca3815f01a5683e19ea0585d2eef9af9e441d7/IMG_20260125_165033592.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <div class="p-8">
-                            <h3 class="text-xl font-bold tracking-tight">BYH Macropad</h3>
+                            <h3 class="text-xl font-bold tracking-tight uppercase italic">BYH Macropad</h3>
                             <p class="text-sm text-gray-400 mt-2">Mechanical Input</p>
                         </div>
                     </a>
@@ -89,16 +90,16 @@
             </section>
 
             <section id="msg" class="mb-20">
-                <div class="bg-white p-10 rnd shd border border-gray-50">
-                    <h2 class="text-2xl font-black mb-1">Contact</h2>
+                <div class="bg-white p-10 rnd border border-gray-200">
+                    <h2 class="text-2xl font-black mb-1 uppercase italic">Contact</h2>
                     <p class="text-gray-400 text-sm mb-10 tracking-tight">Secure channel for hardware collaboration.</p>
                     <form action="#" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <input type="text" placeholder="Identity" class="p-4 bg-gray-50 border-none rnd focus:ring-2 focus:ring-blue-500/20 transition-all outline-none">
-                            <input type="email" placeholder="Signal" class="p-4 bg-gray-50 border-none rnd focus:ring-2 focus:ring-blue-500/20 transition-all outline-none">
+                            <input type="text" placeholder="Identity" class="p-4 bg-gray-50 border-b-2 border-transparent focus:border-red-500 transition-all outline-none">
+                            <input type="email" placeholder="Signal" class="p-4 bg-gray-50 border-b-2 border-transparent focus:border-red-500 transition-all outline-none">
                         </div>
-                        <textarea placeholder="Message Payload" class="w-full p-4 bg-gray-50 border-none rnd focus:ring-2 focus:ring-blue-500/20 transition-all outline-none h-40"></textarea>
-                        <button type="submit" class="w-full b-b text-white font-black py-5 rnd hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95 tracking-[0.2em] text-[10px]">
+                        <textarea placeholder="Message Payload" class="w-full p-4 bg-gray-50 border-b-2 border-transparent focus:border-red-500 transition-all outline-none h-40"></textarea>
+                        <button type="submit" class="w-full b-b text-white font-black py-5 rnd hover:brightness-110 transition-all active:scale-95 tracking-[0.2em] text-[10px]">
                             SEND_TRANSMISSION
                         </button>
                     </form>
@@ -107,14 +108,14 @@
         </main>
     </div>
 
-    <footer class="bg-white py-16">
+    <footer class="bg-white py-16 border-t border-gray-200">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="flex gap-12 text-[10px] font-black tracking-[0.3em] text-gray-300 mb-8 md:mb-0">
-                <a href="https://github.com/Sudo-Aju/" target="_blank" class="hover:text-black transition-colors">GHUB</a>
-                <a href="https://www.linkedin.com/in/azmeer-pirani-928a10299/" target="_blank" class="hover:text-blue-600 transition-colors">LINK</a>
-                <a href="https://www.instagram.com/azmeer.14/" target="_blank" class="hover:text-pink-500 transition-colors">INST</a>
+            <div class="flex gap-12 text-[10px] font-black tracking-[0.3em] text-gray-400 mb-8 md:mb-0">
+                <a href="https://github.com/Sudo-Aju/" target="_blank" class="hover:text-red-500 transition-colors">GHUB</a>
+                <a href="https://www.linkedin.com/in/azmeer-pirani-928a10299/" target="_blank" class="hover:text-red-500 transition-colors">LINK</a>
+                <a href="https://www.instagram.com/azmeer.14/" target="_blank" class="hover:text-red-500 transition-colors">INST</a>
             </div>
-            <div class="text-[11px] font-black c-b tracking-tighter">AZMEER PIRANI</div>
+            <div class="text-[11px] font-black c-b tracking-tighter italic">AZMEER PIRANI</div>
         </div>
     </footer>
 
