@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Apple Computer - 1997</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#551A8B">
+
+<center>
+  <table width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="3" bgcolor="#CCCCCC" height="30">
+        <font face="Helvetica, Arial" size="2">
+          &nbsp; <b>Apple.com</b> | Support | Store | Where to Buy
+        </font>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="3" align="center" valign="middle" height="150" bgcolor="#EEEEEE">
+        <font face="Times New Roman" size="7"><i>think different.</i></font><br>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" width="40" alt="Logo">
+      </td>
+    </tr>
+
+    <tr bgcolor="#666666">
+      <td width="33%" align="center"><font color="#FFFFFF" face="Arial" size="2"><b>imac</b></font></td>
+      <td width="33%" align="center"><font color="#FFFFFF" face="Arial" size="2"><b>power macintosh</b></font></td>
+      <td width="34%" align="center"><font color="#FFFFFF" face="Arial" size="2"><b>quicktime</b></font></td>
+    </tr>
+
+    <tr>
+      <td colspan="2" valign="top" border="1">
+        <h3><font face="Helvetica">the new powerbook G3</font></h3>
+        <p><font face="Helvetica" size="2">its the fastest notebook in the world. period. With a 14.1 inch active matrix display and a 300MHz G3 processor.</font></p>
+        <a href="#"><font size="2" face="Arial">Read the story...</font></a>
+      </td>
+      <td bgcolor="#F0F0F0" valign="top">
+        <font face="Arial" size="2">
+          <b>hot News</b><br>
+          macos 8 released!!!<br>
+          new apple st0re opens<br>
+          quicktime 3 download<br>
+        </font>
+      </td>
+    </tr>
+  </table>
+
+  <hr width="600">
+  <font face="Helvetica" size="1">
+    Copyright © 1997 Apple Computer, Inc. All rights reserved. 
+    <br>Contact Us | Privacy Policy
+  </font>
+</center>
+
+<script>
+  let w = window;
+  let d = document;
+  let s = d.getElementsByTagName("i")[0];
+  
+  function f() {
+    let t = new Date();
+    let h = t.getHours();
+    if (h > 18 || h < 6) {
+      d.body.style.background = "#E0E0E0";
+    }
+  }
+  
+  function g() {
+    let c = s.style.color;
+    s.style.color = (c == "red") ? "black" : "red";
+  }
+  
+  w.onload = f;
+  setInterval(g, 1000);
+</script>
+
+</body>
+</html>
