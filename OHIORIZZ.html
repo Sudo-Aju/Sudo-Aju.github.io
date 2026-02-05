@@ -1,0 +1,165 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHIO RIZZ ACADEMY 💀</title>
+    <style>
+        :root {
+            --g: #00ff00;
+            --r: #ff0000;
+            --b: #00ffff;
+        }
+
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Impact', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
+        }
+
+        .marquee {
+            background: var(--r);
+            padding: 10px;
+            font-size: 2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-bottom: 5px solid white;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .glitch {
+            font-size: 5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                        -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                        0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+            animation: glitch 500ms infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 #f00, -0.05em -0.025em 0 #0f0, 0.025em 0.05em 0 #00f; }
+            14% { text-shadow: 0.05em 0 0 #f00, -0.05em -0.025em 0 #0f0, 0.025em 0.05em 0 #00f; }
+            15% { text-shadow: -0.05em -0.025em 0 #f00, 0.025em 0.025em 0 #0f0, -0.05em -0.05em 0 #00f; }
+
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid var(--g);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        button {
+            background: var(--b);
+            font-family: 'Impact';
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        button:hover {
+            transform: scale(1.2) rotate(5deg);
+            background: #ff00ff;
+        }
+
+        #mewing-timer {
+            font-size: 3rem;
+            color: var(--g);
+        }
+
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: float 3s linear forwards;
+        }
+
+        @keyframes float {
+            to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marquee">
+        <marquee scrollamount="20">SKIBIDI TOILET RIZZ OHIO GYATT FANUM TAX KAI CENAT MEWING STREAK 🤫🧏‍♂️</marquee>
+    </div>
+
+    <div class="main-container">
+        <h1 class="glitch">SIGMA HUB</h1>
+
+        <div class="card">
+            <h2>🤫 MEWING STREAK</h2>
+            <div id="mewing-timer">00:00:00</div>
+            <p>DON'T OPEN YOUR MOUTH OR YOU LOSE YOUR RIZZ</p>
+        </div>
+
+        <div class="card">
+            <h2>🔥 RIZZ GENERATOR</h2>
+            <p id="rizz-text">Click to get unlimited aura...</p>
+            <button onclick="generateRizz()">GET RIZZED</button>
+        </div>
+
+        <div class="card">
+            <h2>⚠️ ALERT</h2>
+            <p>A Fanum Tax of 20% has been applied to your current RAM usage.</p>
+        </div>
+    </div>
+
+    <script>
+
+        let seconds = 0;
+        setInterval(() => {
+            seconds++;
+            const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+            const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+            const s = (seconds % 60).toString().padStart(2, '0');
+            document.getElementById('mewing-timer').innerText = `${h}:${m}:${s}`;
+        }, 1000);
+
+        const brainrot = [
+            "you have l Rizz.",
+            "sticking ot your gyatt for the rizzler",
+            "youre so skibidi.",
+            "welcome to the salty spittoon, how sigma are youu",
+            "baby youre the fanum tax on my pizza.",
+            "negative Aura detected go mew for 10 hours.",
+            "is that a grimace shake in your pocket?"
+        ];
+
+        function generateRizz() {
+            const text = document.getElementById('rizz-text');
+            text.innerText = brainrot[Math.floor(Math.random() * brainrot.length)];
+            
+
+            for(let i=0; i<5; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating-emoji';
+                emoji.innerText = ['💀', '🔥', '🍷', '🗿', '🚽'][Math.floor(Math.random()*5)];
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.top = '100vh';
+                document.body.appendChild(emoji);
+                setTimeout(() => emoji.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
