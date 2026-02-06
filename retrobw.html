@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>byh studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --y: #FFDE03;
+            --w: #FFFFFF;
+            --b: #000000;
+            --s: 3px solid #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+            text-transform: lowercase;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--w);
+            color: var(--b);
+            line-height: 1;
+        }
+
+        .p {
+            background-color: var(--w);
+            background-image: radial-gradient(var(--b) 2px, transparent 2px);
+            background-size: 32px 32px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: var(--y);
+            border-bottom: var(--s);
+        }
+
+        .l {
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .n {
+            display: flex;
+            list-style: none;
+            border-left: var(--s);
+        }
+
+        .n li {
+            border-right: var(--s);
+        }
+
+        .n a {
+            padding: 1.5rem 2rem;
+            display: block;
+            color: var(--b);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .n a:hover {
+            background: var(--w);
+        }
+
+        .h {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            border-bottom: var(--s);
+        }
+
+        .t {
+            padding: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--s);
+        }
+
+        .v {
+            background: var(--y);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+        }
+
+        .g { border: var(--s); }
+        .g.b { background: var(--b); }
+        .g.w { background: var(--w); }
+        .g.r { 
+            background: repeating-linear-gradient(45deg, var(--b), var(--b) 10px, var(--y) 10px, var(--y) 20px); 
+        }
+
+        h1 {
+            font-size: 5rem;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .d {
+            font-size: 1.5rem;
+            max-width: 400px;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .c {
+            background: var(--b);
+            color: var(--w);
+            padding: 1.5rem 3rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .f {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .i {
+            padding: 4rem 2rem;
+            border-right: var(--s);
+            border-bottom: var(--s);
+            background: var(--w);
+        }
+
+        .i:last-child { border-right: none; }
+
+        .i h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .i p {
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="p"></div>
+
+    <nav>
+        <div class="l">byh studios</div>
+        <ul class="n">
+            <li><a href="#">lorem</a></li>
+            <li><a href="#">ipsum</a></li>
+        </ul>
+    </nav>
+
+    <section class="h">
+        <div class="t">
+            <h1>lorem <br> ipsum <br> dolor si</h1>
+            <p class="d">consectetur adipg elit sed do eiusmod tempor incididun ut labore et geometery</p>
+            <button class="c">ut enim a</button>
+        </div>
+        <div class="v">
+            <div class="g b"></div>
+            <div class="g"></div>
+            <div class="g r"></div>
+            <div class="g w"></div>
+            <div class="g"></div>
+            <div class="g b"></div>
+            <div class="g w"></div>
+            <div class="g"></div>
+            <div class="g r"></div>
+            <div class="g"></div>
+            <div class="g b"></div>
+            <div class="g r"></div>
+            <div class="g"></div>
+            <div class="g w"></div>
+            <div class="g"></div>
+            <div class="g b"></div>
+        </div>
+    </section>
+
+    <section class="f">
+        <div class="i">
+            <h2>01 lorem</h2>
+            <p>quis nostrud ecitation ullamco laboris nisi ut aliquip ex ea commodo pression</p>
+        </div>
+        <div class="i" style="background: var(--y);">
+            <h2>02 ipsum</h2>
+            <p>duis aute irure dolor in reprenderit in voluptate velit esse functionaliti</p>
+        </div>
+        <div class="i">
+            <h2>3 dolor</h2>
+            <p>excepteur sint occaecat cudatat non proident sunt in culpa qui officia</p>
+        </div>
+    </section>
+
+</body>
+</html>
