@@ -37,6 +37,8 @@
             box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
 
         .title-bar {
@@ -145,6 +147,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            z-index: 100;
         }
 
         .start-btn {
@@ -155,10 +158,44 @@
             gap: 5px;
         }
 
-        canvas {
+        canvas.matrix {
             background: #000;
             display: block;
             border: 2px inset white;
+        }
+
+        .paint-canvas {
+            background: white;
+            border: 2px inset #808080;
+            cursor: crosshair;
+        }
+
+        .flashcard {
+            background: white;
+            border: 2px solid black;
+            padding: 20px;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            box-shadow: 2px 2px 0px #888;
+        }
+
+        table.schedule {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        table.schedule th, table.schedule td {
+            border: 1px solid #808080;
+            padding: 4px;
+            font-size: 12px;
+        }
+        table.schedule th {
+            background: var(--win-grey);
         }
     </style>
 </head>
@@ -174,8 +211,58 @@
             <div class="close-btn" onclick="closeWindow(this)">x</div>
         </div>
         <div class="content" style="padding: 5px;">
-            <canvas id="matrixCanvas" width="280" height="200"></canvas>
+            <canvas id="matrixCanvas" class="matrix" width="280" height="200"></canvas>
             <p style="font-size: 10px; text-align: center; margin-top: 5px;">ACCESSING MAINFRAME...</p>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>MS_Paint.exe</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content">
+            <canvas id="paintCanvas" class="paint-canvas" width="260" height="150"></canvas>
+            <div style="margin-top: 5px; text-align: center;">
+                <button onclick="clearPaint()">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>FlashCards.db</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content">
+            <div id="flashCardDisplay" class="flashcard">
+                [No Cards Yet]
+            </div>
+            <div style="display: flex; gap: 5px; justify-content: center; margin-bottom: 10px;">
+                <button onclick="flipCard()">FLIP</button>
+                <button onclick="nextCard()">NEXT</button>
+            </div>
+            <hr style="border: 1px inset white;">
+            <input type="text" id="fcFront" placeholder="Front (Question)" style="width: 85%;">
+            <input type="text" id="fcBack" placeholder="Back (Answer)" style="width: 85%;">
+            <button onclick="addCard()">Add Card</button>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>Schedule.xls</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content">
+            <table class="schedule">
+                <tr><th>Per</th><th>Class</th><th>Rm</th></tr>
+                <tr><td>1</td><td><input type="text" style="width:100%; border:none; margin:0; padding:0;" placeholder="Math"></td><td>101</td></tr>
+                <tr><td>2</td><td><input type="text" style="width:100%; border:none; margin:0; padding:0;" placeholder="Hist"></td><td>204</td></tr>
+                <tr><td>3</td><td><input type="text" style="width:100%; border:none; margin:0; padding:0;" placeholder="Sci"></td><td>Lab</td></tr>
+                <tr><td>4</td><td><input type="text" style="width:100%; border:none; margin:0; padding:0;" placeholder="Eng"></td><td>302</td></tr>
+            </table>
+            <p style="font-size: 10px; margin-top: 5px;">* Auto-Save Disabled</p>
         </div>
     </div>
 
@@ -255,36 +342,88 @@
 <script>
     const canvas = document.getElementById('matrixCanvas');
     const ctx = canvas.getContext('2d');
-
     const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const charArray = chars.split('');
     const fontSize = 10;
     const columns = canvas.width / fontSize;
     const drops = [];
 
-    for (let i = 0; i < columns; i++) {
-        drops[i] = 1;
-    }
+    for (let i = 0; i < columns; i++) { drops[i] = 1; }
 
     function drawMatrix() {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         ctx.fillStyle = '#0F0'; 
         ctx.font = fontSize + 'px monospace';
-
         for (let i = 0; i < drops.length; i++) {
             const text = charArray[Math.floor(Math.random() * charArray.length)];
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
             drops[i]++;
         }
     }
-
     setInterval(drawMatrix, 33);
+
+    const pCanvas = document.getElementById('paintCanvas');
+    const pCtx = pCanvas.getContext('2d');
+    let painting = false;
+
+    function startPosition(e) {
+        painting = true;
+        draw(e);
+    }
+    function finishedPosition() {
+        painting = false;
+        pCtx.beginPath();
+    }
+    function draw(e) {
+        if (!painting) return;
+        const rect = pCanvas.getBoundingClientRect();
+        pCtx.lineWidth = 2;
+        pCtx.lineCap = 'square';
+        pCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+        pCtx.stroke();
+        pCtx.beginPath();
+        pCtx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+    }
+    pCanvas.addEventListener('mousedown', startPosition);
+    pCanvas.addEventListener('mouseup', finishedPosition);
+    pCanvas.addEventListener('mousemove', draw);
+    function clearPaint() { pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height); }
+
+    let cards = [];
+    let currentCardIndex = 0;
+    let showingFront = true;
+
+    function addCard() {
+        const f = document.getElementById('fcFront').value;
+        const b = document.getElementById('fcBack').value;
+        if(f && b) {
+            cards.push({front: f, back: b});
+            document.getElementById('fcFront').value = '';
+            document.getElementById('fcBack').value = '';
+            if(cards.length === 1) updateCardDisplay();
+        }
+    }
+    function flipCard() {
+        if(cards.length === 0) return;
+        showingFront = !showingFront;
+        updateCardDisplay();
+    }
+    function nextCard() {
+        if(cards.length === 0) return;
+        currentCardIndex = (currentCardIndex + 1) % cards.length;
+        showingFront = true;
+        updateCardDisplay();
+    }
+    function updateCardDisplay() {
+        const div = document.getElementById('flashCardDisplay');
+        if(cards.length === 0) {
+            div.innerText = "[No Cards Yet]";
+        } else {
+            div.innerText = showingFront ? cards[currentCardIndex].front : cards[currentCardIndex].back;
+        }
+    }
 
     function addTodo() {
         const input = document.getElementById('todoInput');
@@ -300,7 +439,6 @@
     let timer;
     let timeLeft = 1500; 
     let isRunning = false;
-
     function startTimer() {
         if(isRunning) return;
         isRunning = true;
@@ -315,36 +453,29 @@
             }
         }, 1000);
     }
-
     function resetTimer() {
         clearInterval(timer);
         isRunning = false;
         timeLeft = 1500;
         updateDisplay();
     }
-
     function updateDisplay() {
         const m = Math.floor(timeLeft / 60);
         const s = timeLeft % 60;
-        document.getElementById('timerDisplay').innerText = 
-            `${m}:${s < 10 ? '0' : ''}${s}`;
+        document.getElementById('timerDisplay').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
     function calculate() {
         const current = parseFloat(document.getElementById('currGrade').value);
         const weight = parseFloat(document.getElementById('examWeight').value);
         const resultBox = document.getElementById('calcResult');
-
         if(isNaN(current) || isNaN(weight)) {
             resultBox.innerText = "Error: Invalid Input";
             return;
         }
-
         const decimalWeight = weight / 100;
         const needed = (90 - (current * (1 - decimalWeight))) / decimalWeight;
-
         resultBox.innerText = `Need ${needed.toFixed(1)}% for an A`;
-        
         if(needed > 100) {
             resultBox.style.color = "red";
             resultBox.innerText += " (Impossible!)";
