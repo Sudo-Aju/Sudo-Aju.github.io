@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RG Y</title>
+    <style>
+        :root {
+            --g: #00ff00;
+            --y: #ffff00;
+            --r: #ff0000;
+            --b: #000000;
+        }
+
+        body {
+            background: var(--b);
+            color: var(--y);
+            font-family: monospace;
+            margin: 0;
+            text-align: center;
+            border: 10px solid var(--r);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        #h {
+            font-size: 5rem;
+            color: var(--g);
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+
+        .s {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            border-top: 5px solid var(--y);
+            border-bottom: 5px solid var(--y);
+        }
+
+        .v {
+            font-size: 7rem;
+            color: var(--y);
+        }
+
+        .l {
+            color: var(--r);
+            font-size: 1.5rem;
+        }
+
+        #m {
+            margin-top: 60px;
+        }
+
+        .k {
+            background: var(--g);
+            color: var(--b);
+            border: 5px solid var(--y);
+            padding: 25px 50px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .k:hover {
+            background: var(--r);
+            color: var(--y);
+        }
+
+        #p {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--y);
+            border-radius: 50%;
+            display: none;
+        }
+
+        marquee {
+            background: var(--r);
+            color: var(--y);
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <marquee>SCORE UPDATE: RED 99 - GREEN 00 - CLOCK RUNNING - NO TIMEOUTS REMAINING</marquee>
+
+    <h1 id="h">CHAOS BOWL</h1>
+
+    <div class="s">
+        <div>
+            <div class="l">RED</div>
+            <div id="q" class="v">00</div>
+        </div>
+        <div>
+            <div class="l">TIME</div>
+            <div id="w" class="v" style="color: var(--g)">99</div>
+        </div>
+        <div>
+            <div class="l">GREEN</div>
+            <div id="e" class="v">00</div>
+        </div>
+    </div>
+
+    <div id="m">
+        <button class="k" onclick="z()">BLITZ</button>
+    </div>
+
+    <div id="p"></div>
+
+    <script>
+        let a = 0;
+        let b = 0;
+        let c = 99;
+
+        const d = document.getElementById('q');
+        const f = document.getElementById('e');
+        const g = document.getElementById('w');
+        const h = document.getElementById('p');
+
+        setInterval(() => {
+            a += Math.floor(Math.random() * 9);
+            b += Math.floor(Math.random() * 9);
+            d.innerText = a;
+            f.innerText = b;
+        }, 1500);
+
+        setInterval(() => {
+            if (c > 0) c--;
+            else c = 99;
+            g.innerText = c;
+        }, 1000);
+
+        function z() {
+            h.style.display = 'block';
+            h.style.top = '50%';
+            let x = 0;
+            let y = setInterval(() => {
+                if (x > window.innerWidth) {
+                    clearInterval(y);
+                    h.style.display = 'none';
+                    document.body.style.backgroundColor = 'var(--g)';
+                    setTimeout(() => document.body.style.backgroundColor = 'var(--b)', 100);
+                } else {
+                    x += 20;
+                    h.style.left = x + 'px';
+                }
+            }, 10);
+        }
+    </script>
+</body>
+</html>
