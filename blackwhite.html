@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BYH</title>
+<style>
+    :root { --b: #000; --w: #fff; }
+    
+    * { box-sizing: border-box; cursor: none; }
+    
+    body {
+        margin: 0; width: 100vw; height: 100vh;
+        background: var(--b); color: var(--w);
+        overflow: hidden;
+        font-family: 'Courier New', monospace;
+    }
+
+    .l {
+        position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        mix-blend-mode: difference;
+    }
+
+    .t {
+        font-size: 40vw;
+        font-weight: 900;
+        line-height: 0.8;
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        color: var(--w);
+        white-space: nowrap;
+    }
+
+    .o {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--w);
+        width: 50vw; height: 50vw;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .v {
+        position: absolute;
+        width: 1px; height: 100vh;
+        background: var(--w);
+        left: 20%;
+    }
+
+    .n {
+        position: absolute;
+        border: 1px solid var(--w);
+        padding: 5px;
+        font-size: 10px;
+        background: var(--b);
+        pointer-events: auto;
+        z-index: 10;
+        text-transform: uppercase;
+    }
+    .n:hover { background: var(--w); color: var(--b); }
+    
+    .a { top: 20px; left: 20px; }
+    .b { bottom: 20px; right: 20px; }
+    .c { top: 50%; left: 0; transform: rotate(-90deg) translateY(-50%); }
+
+    .h {
+        position: absolute;
+        width: 150px; height: 150px;
+        border: 1px solid transparent;
+        display: flex; align-items: center; justify-content: center;
+        color: transparent;
+        pointer-events: auto;
+        z-index: 20;
+        font-size: 12px;
+        text-align: center;
+    }
+    .h:hover { border-color: var(--w); color: var(--w); background: var(--b); }
+    
+    .x { top: 20%; right: 20%; }
+    .y { bottom: 20%; left: 15%; }
+
+    #x {
+        position: fixed;
+        width: 100px; height: 100px;
+        background: var(--w);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        mix-blend-mode: difference;
+        z-index: 999;
+    }
+
+    .g {
+        position: absolute;
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .g div {
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .k {
+        position: fixed;
+        width: 20px; height: 20px;
+        border-color: var(--w);
+        border-style: solid;
+        z-index: 10;
+        pointer-events: none;
+    }
+    .k.tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+    .k.tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+    .k.bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+    .k.br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+
+    .d {
+        position: absolute;
+        right: 40px; top: 35%;
+        font-size: 9px;
+        text-align: right;
+        line-height: 1.6;
+        z-index: 5;
+        opacity: 0.8;
+        font-family: monospace;
+    }
+
+    .q {
+        position: absolute;
+        bottom: 40px; left: 60px;
+        display: flex;
+        gap: 3px;
+        z-index: 5;
+    }
+    .q div { width: 3px; height: 25px; background: var(--w); }
+    .q div:nth-child(2n) { width: 1px; }
+    .q div:nth-child(3n) { background: transparent; width: 5px; border: 1px solid var(--w); }
+</style>
+</head>
+<body>
+
+    <div id="x"></div>
+
+    <div class="g">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+    </div>
+
+    <div class="k tl"></div>
+    <div class="k tr"></div>
+    <div class="k bl"></div>
+    <div class="k br"></div>
+
+    <div class="l">
+        <div class="o"></div>
+        <div class="v"></div>
+    </div>
+
+    <div class="l">
+        <div class="t">BYH</div>
+    </div>
+
+    <div class="h x">VOID<br>DETECTED</div>
+    <div class="h y">SYSTEM<br>LOCKED</div>
+
+    <div class="d">
+        AF-99<br>
+        XX-01<br>
+        ---<br>
+        00.12<br>
+        44.91<br>
+        11.00<br>
+        ---<br>
+        NULL
+    </div>
+
+    <div class="q">
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div>
+    </div>
+
+    <div class="n a">INIT</div>
+    <div class="n b">EXIT</div>
+    <div class="n c">MENU</div>
+
+    <script>
+        const c = document.getElementById('x');
+        document.addEventListener('mousemove', e => {
+            c.style.left = e.clientX + 'px';
+            c.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
