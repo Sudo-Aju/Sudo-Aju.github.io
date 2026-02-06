@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student OS 95</title>
+    <style>
+        :root {
+            --win-grey: #c0c0c0;
+            --win-blue: #000080;
+            --win-text: #000000;
+            --desktop-teal: #008080;
+        }
+
+        body {
+            background-color: var(--desktop-teal);
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 20px 20px; 
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .window {
+            background-color: var(--win-grey);
+            border-top: 2px solid white;
+            border-left: 2px solid white;
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+            width: 300px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, var(--win-blue), #1084d0);
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move; 
+        }
+
+        .close-btn {
+            background: var(--win-grey);
+            border-top: 1px solid white;
+            border-left: 1px solid white;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            width: 16px;
+            height: 16px;
+            line-height: 14px;
+            text-align: center;
+            color: black;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .close-btn:active {
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            border-right: 1px solid white;
+            border-bottom: 1px solid white;
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        input, select, textarea {
+            width: 90%;
+            background: white;
+            border: 2px solid;
+            border-color: #808080 white white #808080; 
+            padding: 5px;
+            font-family: "Courier New", monospace;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: var(--win-grey);
+            border-top: 2px solid white;
+            border-left: 2px solid white;
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+            padding: 5px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        button:active {
+            border-top: 2px solid black;
+            border-left: 2px solid black;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: translate(1px, 1px);
+        }
+
+        .marquee-container {
+            width: 100%;
+            background: black;
+            color: lime;
+            font-family: "Courier New", monospace;
+            padding: 5px;
+            border: 2px solid white;
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+        }
+
+        ul { padding-left: 20px; margin: 0; list-style-type: square; }
+        li { margin-bottom: 5px; cursor: pointer; }
+        li:hover { text-decoration: line-through; color: red; }
+        
+        .timer-screen {
+            background: black;
+            color: lime;
+            font-size: 2rem;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #808080;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .start-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--win-grey);
+            border-top: 2px solid white;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .start-btn {
+            font-weight: bold;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-container">
+        <marquee scrollamount="10">WELCOME TO STUDENT_OS_95   DON'T FORGET TO SAVE YOUR WORK   EXAMS ARE COMING   DRINK WATER</marquee>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>Notepad.exe</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content">
+            <p>Homework List:</p>
+            <input type="text" id="todoInput" placeholder="Type assignment...">
+            <button onclick="addTodo()">Add Item</button>
+            <hr style="border: 1px inset white;">
+            <ul id="todoList">
+                <li>Math: Ch 4 Review</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>Clock.dll</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content">
+            <div class="timer-screen" id="timerDisplay">25:00</div>
+            <div style="display: flex; justify-content: space-between;">
+                <button onclick="startTimer()">Start</button>
+                <button onclick="resetTimer()">Reset</button>
+            </div>
+            <p style="font-size: 0.8rem; margin-top:10px;">Pomodoro Mode Active</p>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>Calc.exe</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content">
+            <label>Current Grade (%):</label>
+            <input type="number" id="currGrade" placeholder="85">
+            <label>Final Exam Worth (%):</label>
+            <input type="number" id="examWeight" placeholder="20">
+            <button onclick="calculate()">Calculate</button>
+            <div id="calcResult" style="margin-top: 10px; font-weight: bold; background: white; padding: 5px; border: 1px inset;">
+                Result: Ready
+            </div>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>WinAmp_Lite</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content">
+            <div style="background: black; color: #00ff00; padding: 5px; margin-bottom: 10px; font-size: 10px;">
+                TRACK 01: LO-FI STUDY BEATS<br>
+                128kbps /// STEREO
+            </div>
+            <input type="range" style="width: 80%; accent-color: black;">
+            <br>
+            <button>|&lt;</button> <button>PLAY</button> <button>&gt;|</button>
+        </div>
+    </div>
+
+    <div class="start-bar">
+        <button class="start-btn">
+            <span style="background:black; color:silver; padding:0 3px; border-radius:50%;">❖</span> Start
+        </button>
+        <div style="border: 1px inset white; padding: 2px 10px; background: #c0c0c0; margin-left: auto;">
+            11:59 PM
+        </div>
+    </div>
+
+<script>
+    function addTodo() {
+        const input = document.getElementById('todoInput');
+        if(input.value) {
+            const li = document.createElement('li');
+            li.innerText = input.value;
+            li.onclick = function() { this.remove(); };
+            document.getElementById('todoList').appendChild(li);
+            input.value = "";
+        }
+    }
+
+    let timer;
+    let timeLeft = 1500; 
+    let isRunning = false;
+
+    function startTimer() {
+        if(isRunning) return;
+        isRunning = true;
+        timer = setInterval(() => {
+            if(timeLeft <= 0) {
+                clearInterval(timer);
+                alert("TIME UP! Take a break.");
+                isRunning = false;
+            } else {
+                timeLeft--;
+                updateDisplay();
+            }
+        }, 1000);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        isRunning = false;
+        timeLeft = 1500;
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        const m = Math.floor(timeLeft / 60);
+        const s = timeLeft % 60;
+        document.getElementById('timerDisplay').innerText = 
+            `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    function calculate() {
+        const current = parseFloat(document.getElementById('currGrade').value);
+        const weight = parseFloat(document.getElementById('examWeight').value);
+        const resultBox = document.getElementById('calcResult');
+
+        if(isNaN(current) || isNaN(weight)) {
+            resultBox.innerText = "Error: Invalid Input";
+            return;
+        }
+
+        const decimalWeight = weight / 100;
+        const needed = (90 - (current * (1 - decimalWeight))) / decimalWeight;
+
+        resultBox.innerText = `Need ${needed.toFixed(1)}% for an A`;
+        
+        if(needed > 100) {
+            resultBox.style.color = "red";
+            resultBox.innerText += " (Impossible!)";
+        } else {
+            resultBox.style.color = "black";
+        }
+    }
+
+    function closeWindow(element) {
+        element.parentElement.parentElement.style.display = "none";
+    }
+</script>
+
+</body>
+</html>
