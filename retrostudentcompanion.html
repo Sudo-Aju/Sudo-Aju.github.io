@@ -9,11 +9,11 @@
             --win-grey: #c0c0c0;
             --win-blue: #000080;
             --win-text: #000000;
-            --desktop-teal: #008080;
+            --r: #cc0000;
         }
 
         body {
-            background-color: var(--desktop-teal);
+            background-color: var(--r);
             background-image: radial-gradient(#000 1px, transparent 1px);
             background-size: 20px 20px; 
             font-family: "Courier New", Courier, monospace;
@@ -154,12 +154,29 @@
             align-items: center;
             gap: 5px;
         }
+
+        canvas {
+            background: #000;
+            display: block;
+            border: 2px inset white;
+        }
     </style>
 </head>
 <body>
 
     <div class="marquee-container">
         <marquee scrollamount="10">WELCOME TO STUDENT_OS_95   DON'T FORGET TO SAVE YOUR WORK   EXAMS ARE COMING   DRINK WATER</marquee>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>Mainframe_Hack.exe</span>
+            <div class="close-btn" onclick="closeWindow(this)">x</div>
+        </div>
+        <div class="content" style="padding: 5px;">
+            <canvas id="matrixCanvas" width="280" height="200"></canvas>
+            <p style="font-size: 10px; text-align: center; margin-top: 5px;">ACCESSING MAINFRAME...</p>
+        </div>
     </div>
 
     <div class="window">
@@ -236,6 +253,39 @@
     </div>
 
 <script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const charArray = chars.split('');
+    const fontSize = 10;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
+    }
+
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#0F0'; 
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = charArray[Math.floor(Math.random() * charArray.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    setInterval(drawMatrix, 33);
+
     function addTodo() {
         const input = document.getElementById('todoInput');
         if(input.value) {
