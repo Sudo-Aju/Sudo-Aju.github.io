@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciCalc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .b {
+            @apply flex items-center justify-center p-4 font-mono transition-all active:bg-white active:text-black text-lg border border-slate-800;
+            border-radius: 0px !important;
+            color: white !important;
+        }
+        .n { background-color: #000000; }
+        .o { background-color: #1e293b; }
+        .f { background-color: #000000; font-size: 0.75rem; color: #94a3b8 !important; }
+        .c { background-color: #000000; color: #ef4444 !important; }
+        .e { background-color: #4f46e5 !important; color: white !important; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-black flex items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-sm border-2 border-slate-800" style="border-radius: 0px;">
+        <div class="p-6 text-right bg-black border-b border-slate-800">
+            <div id="h" class="text-slate-600 text-xs h-5 overflow-hidden font-mono uppercase"></div>
+            <div id="d" class="text-white text-5xl font-light truncate font-mono mt-2">0</div>
+        </div>
+        <div class="grid grid-cols-4">
+            <button onclick="f('Math.sin')" class="b f">SIN</button>
+            <button onclick="f('Math.cos')" class="b f">COS</button>
+            <button onclick="f('Math.tan')" class="b f">TAN</button>
+            <button onclick="x()" class="b c">AC</button>
+            <button onclick="f('Math.sqrt')" class="b f">SQRT</button>
+            <button onclick="f('Math.log10')" class="b f">LOG</button>
+            <button onclick="a('**')" class="b f">POW</button>
+            <button onclick="z()" class="b c">DEL</button>
+            <button onclick="a('7')" class="b n">7</button>
+            <button onclick="a('8')" class="b n">8</button>
+            <button onclick="a('9')" class="b n">9</button>
+            <button onclick="a('/')" class="b o">/</button>
+            <button onclick="a('4')" class="b n">4</button>
+            <button onclick="a('5')" class="b n">5</button>
+            <button onclick="a('6')" class="b n">6</button>
+            <button onclick="a('*')" class="b o">×</button>
+            <button onclick="a('1')" class="b n">1</button>
+            <button onclick="a('2')" class="b n">2</button>
+            <button onclick="a('3')" class="b n">3</button>
+            <button onclick="a('-')" class="b o">-</button>
+            <button onclick="a('0')" class="b n">0</button>
+            <button onclick="a('.')" class="b n">.</button>
+            <button onclick="q()" class="b e">=</button>
+            <button onclick="a('+')" class="b o">+</button>
+        </div>
+    </div>
+    <script>
+        const d = document.getElementById('d');
+        const h = document.getElementById('h');
+        let s = '';
+        function a(v) {
+            if (d.innerText === '0' && v !== '.') s = v;
+            else s += v;
+            u();
+        }
+        function f(v) {
+            s += v + '(';
+            u();
+        }
+        function x() {
+            s = '';
+            h.innerText = '';
+            d.innerText = '0';
+        }
+        function z() {
+            s = s.slice(0, -1);
+            u();
+        }
+        function u() {
+            let v = s.replace(/Math\./g, '').replace(/\*\*/g, '^').replace(/\*/g, '×').replace(/\//g, '÷');
+            d.innerText = v || '0';
+        }
+        function q() {
+            try {
+                const o = (s.match(/\(/g) || []).length;
+                const c = (s.match(/\)/g) || []).length;
+                for(let i=0; i < (o - c); i++) s += ')';
+                const r = eval(s);
+                h.innerText = d.innerText + ' =';
+                d.innerText = Number.isInteger(r) ? r : r.toFixed(4);
+                s = r.toString();
+            } catch (e) {
+                d.innerText = 'ERR';
+                setTimeout(x, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
